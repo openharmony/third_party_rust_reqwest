@@ -1,6 +1,6 @@
-## 三方开源软件 reqwest
+# 三方开源软件 reqwest
 
-### 1. Reqwest 简介
+## Reqwest 简介
 
 Reqwest 是一个 Rust 编写的第三方库，提供了一个符合人体工学的、强大的 Rust HTTP 客户端，并提供了如下功能：
 
@@ -13,22 +13,30 @@ Reqwest 是一个 Rust 编写的第三方库，提供了一个符合人体工学
 
 Reqwest 基于 Rust 异步语义实现，具有高性能、高吞吐量等特点。
 
-### 2. 引入背景简述
+## 引入背景简述
 
-OpenHarmony 需要引入 Rust 的 HTTP 客户端能力。
+OpenHarmony 需要引入 Rust 的 HTTP 客户端能力。借助于 Reqwest 的 HTTP 客户端功能，可以提高 OpenHarmony 各组件在进行 HTTP 请求交互时的吞吐量，并降低时延。
 
-### 3. 使用场景
+任何 Rust 语言编写的组件且需要使用 HTTP 客户端的场景均可使用 Reqwest 来发送 HTTP 请求。
 
-任何 Rust 语言编写的组件且需要使用 HTTP 客户端的场景均可使用。
-
-### 4. 为 OpenHarmony 带来的价值
-
-借助于 Reqwest 的 HTTP 客户端功能，提高 OpenHarmony 各组件在进行 HTTP 请求交互时的吞吐量，降低时延。
-
-### 5. 如何使用
+## 如何使用
 
 在您的 BUILD.gn 需要的地方添加依赖即可。
 
 ```json
  deps += [ "//third_party/rust/crate/reqwest" ]
+```
+
+如果您需要使用 Cargo 的方式进行依赖，可以在自己的 Rust crate 的 Cargo.toml 下添加如下字段：
+
+如果您的本地环境上存在 reqwest 库，您可以使用路径依赖：
+```
+[dependencies]
+reqwest = { path = "(reqwest 的具体路径)" }
+```
+
+使用版本依赖。如果您使用该依赖方式，该三方库会在 Cargo build 时自动从 crates.io 下载。
+```
+[dependencies]
+reqwest = "0.11.13" 
 ```
