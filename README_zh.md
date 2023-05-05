@@ -27,7 +27,7 @@ OpenHarmony 需要引入 Rust 的 HTTP 客户端能力。借助于 Reqwest 的 H
  deps += [ "//third_party/rust/crate/reqwest" ]
 ```
 
-如果您需要使用 Cargo 的方式进行依赖，可以在自己的 Rust crate 的 Cargo.toml 下添加如下字段：
+如果您需要使用 Cargo 的方式进行依赖，可以在自己的 Rust 工程的 Cargo.toml 下添加如下字段：
 
 如果您的本地环境上存在 reqwest 库，您可以使用路径依赖：
 ```
@@ -35,8 +35,8 @@ OpenHarmony 需要引入 Rust 的 HTTP 客户端能力。借助于 Reqwest 的 H
 reqwest = { path = "(reqwest 的具体路径)" }
 ```
 
-使用版本依赖。如果您使用该依赖方式，该三方库会在 Cargo build 时自动从 crates.io 下载。
+您也可以依赖 Reqwest 的具体版本。如果您使用该方式，该三方库会在您的 Rust 工程编译时自动从 crates.io 下载。
 ```
 [dependencies]
-reqwest = "0.11.13" 
+reqwest = { version = "0.11.13" } 
 ```
